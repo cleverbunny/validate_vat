@@ -9,7 +9,9 @@ defmodule ValidateVat.Mixfile do
      start_permanent: Mix.env == :prod,
      package: package(),
      description: description(),
-     deps: deps()]
+     deps: deps(),
+     docs: docs()
+    ]
   end
 
   def application do
@@ -17,7 +19,10 @@ defmodule ValidateVat.Mixfile do
   end
 
   defp deps do
-    []
+    [
+      {:earmark, "~> 1.2", only: :dev},
+      {:ex_doc, "~> 0.14", only: :dev, runtime: false}
+    ]
   end
 
   defp package do
@@ -29,5 +34,11 @@ defmodule ValidateVat.Mixfile do
 
   defp description do
     "Check validity of VAT numbers"
+  end
+
+  defp docs do
+    [main: "Vat",
+     logo: "Bunny5.4.png"
+    ]
   end
 end

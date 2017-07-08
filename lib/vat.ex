@@ -14,6 +14,7 @@ defmodule Vat do
 
   @doc """
   Validate VAT number
+
   ## Examples
 
       iex> Vat.valid?("AT", "U123456789")
@@ -21,6 +22,6 @@ defmodule Vat do
 
   """
 
-  @spec valid?(String.t, String.t) :: boolean
+  @spec valid?(binary, binary) :: boolean
   def valid?("AT", vat_number), do: Regex.match?(~r/^U\d{9}$/i, vat_number)
 end
