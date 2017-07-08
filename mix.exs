@@ -3,7 +3,7 @@ defmodule ValidateVat.Mixfile do
 
   def project do
     [app: :validate_vat,
-     version: "0.1.0",
+     version: "0.0.1",
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
@@ -12,31 +12,22 @@ defmodule ValidateVat.Mixfile do
      deps: deps()]
   end
 
-  def package do
-    [mainteiners: [""],
+  def application do
+    [extra_applications: []]
+  end
+
+  defp deps do
+    []
+  end
+
+  defp package do
+    [mainteiners: ["Tetiana Dushenkivska", "Keith Salisbury"],
      licenses: ["MIT"],
-     links: %{"GitHub" => ""}
+     links: %{"GitHub" => "https://github.com/cleverbunny/validate_vat"}
     ]
   end
 
-  # Configuration for the OTP application
-  #
-  # Type "mix help compile.app" for more information
-  def application do
-    # Specify extra applications you'll use from Erlang/Elixir
-    [extra_applications: [:logger]]
-  end
-
-  # Dependencies can be Hex packages:
-  #
-  #   {:my_dep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:my_dep, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
-  defp deps do
-    []
+  defp description do
+    "Check validity of VAT numbers"
   end
 end
