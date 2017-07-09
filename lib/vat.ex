@@ -17,14 +17,33 @@ defmodule Vat do
 
   ## Examples
 
-      iex> Vat.valid?("AT", "U123456789")
+      iex> Vat.valid_format?("AT", "U123456789")
       true
 
   """
 
-  @spec valid?(binary, binary) :: boolean
-  def valid?("AT", vat_number), do: Regex.match?(~r/^U\d{9}$/i, vat_number)
-  def valid?("BE", vat_number), do: Regex.match?(~r/^0\d{10}$/i, vat_number)
-  def valid?("BG", vat_number), do: Regex.match?(~r/^(\d{9}|\d{10})$/i, vat_number)
-  def valid?("CY", vat_number), do: Regex.match?(~r/^\d{8}\w$/i, vat_number)
+  @spec valid_format?(binary, binary) :: boolean
+  def valid_format?("AT", vat_number), do: Regex.match?(~r/^U\d{9}$/i, vat_number)
+  def valid_format?("BE", vat_number), do: Regex.match?(~r/^0\d{10}$/i, vat_number)
+  def valid_format?("CY", vat_number), do: Regex.match?(~r/^\d{8}[A-z]$/i, vat_number)
+  def valid_format?("DE", vat_number), do: Regex.match?(~r/^\d{9}$/i, vat_number)
+  def valid_format?("EE", vat_number), do: Regex.match?(~r/^\d{9}$/i, vat_number)
+  def valid_format?("EL", vat_number), do: Regex.match?(~r/^\d{9}$/i, vat_number)
+  def valid_format?("FI", vat_number), do: Regex.match?(~r/^\d{8}$/i, vat_number)
+
+  def valid_format?("BG", vat_number) do
+    Regex.match?(~r/^(\d{9}|\d{10})$/i, vat_number)
+  end
+
+  def valid_format?("CZ", vat_number) do
+    Regex.match?(~r/^(\d{8}|\d{9}|\d{10})$/i, vat_number)
+  end
+
+  def valid_format?("DK", vat_number) do
+    Regex.match?(~r/^\d{8}$/i, String.replace(vat_number, " ", ""))
+  end
+
+  def valid_format?("ES", vat_number) do
+    Regex.match?(~r/(^[A-z]\d{8}$|^\d{8}[A-z]$)/i, vat_number)
+  end
 end
