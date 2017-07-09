@@ -24,4 +24,5 @@ defmodule Vat do
 
   @spec valid?(binary, binary) :: boolean
   def valid?("AT", vat_number), do: Regex.match?(~r/^U\d{9}$/i, vat_number)
+  def valid?("BE", vat_number), do: Regex.match?(~r/^0\d{10}$/i, vat_number)
 end
