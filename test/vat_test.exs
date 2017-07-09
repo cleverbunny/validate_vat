@@ -225,4 +225,61 @@ defmodule VatTest do
       assert Vat.valid_format?("FI", "123K5678") == false
     end
   end
+
+  describe "France" do
+    test "Valid Format VAT number provided" do
+      assert Vat.valid_format?("FR", "PR123456789") == true
+      assert Vat.valid_format?("FR", "vm123456789") == true
+      assert Vat.valid_format?("FR", "23123456789") == true
+    end
+
+    test "Invalid Format VAT number, first 2 chars incorrect" do
+      assert Vat.valid_format?("FR", "?!123456789") == false
+    end
+
+    test "Invalid format VAT number, too many digits" do
+      assert Vat.valid_format?("FR", "vm1234567890") == false
+    end
+
+    test "Invalid format VAT number, not enough digits" do
+      assert Vat.valid_format?("FR", "vm12345678") == false
+    end
+
+    test "Invalid format VAT number, not digits after first charachter" do
+      assert Vat.valid_format?("FR", "vm123K56789") == false
+    end
+  end
+
+  describe "United Kingdom" do
+    test "Valid Format VAT number provided" do
+      assert Vat.valid_format?("GB", "123 4567 89") == true
+      assert Vat.valid_format?("GB", "123456789") == true
+
+      assert Vat.valid_format?("GB", "123 4567 89 123") == true
+      assert Vat.valid_format?("GB", "123456789123") == true
+
+      assert Vat.valid_format?("GB", "GD123") == true
+      assert Vat.valid_format?("GB", "gd123") == true
+
+      assert Vat.valid_format?("GB", "HA123") == true
+      assert Vat.valid_format?("GB", "ha123") == true
+    end
+
+    test "Invalid Format VAT number, first 2 chars incorrect" do
+      assert Vat.valid_format?("GB", "?!123") == false
+      assert Vat.valid_format?("GB", "BR123") == false
+    end
+
+    test "Invalid format VAT number, too many digits" do
+      assert Vat.valid_format?("GB", "1234567891234") == false
+    end
+
+    test "Invalid format VAT number, not enough digits" do
+      assert Vat.valid_format?("GB", "12345678") == false
+    end
+
+    test "Invalid format VAT number, not digits after first charachter" do
+      assert Vat.valid_format?("GB", "vm123K56789") == false
+    end
+  end
 end
