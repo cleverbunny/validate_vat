@@ -10,7 +10,8 @@ defmodule ValidateVat.Mixfile do
      package: package(),
      description: description(),
      deps: deps(),
-     docs: docs()
+     docs: docs(),
+     source_url: "https://github.com/cleverbunny/validate_vat"
     ]
   end
 
@@ -33,7 +34,7 @@ defmodule ValidateVat.Mixfile do
   end
 
   defp description do
-    "Check validity of VAT numbers"
+    "Validates the format of VAT numbers"
   end
 
   defp docs do
