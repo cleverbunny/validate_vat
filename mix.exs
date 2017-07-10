@@ -27,7 +27,7 @@ defmodule ValidateVat.Mixfile do
   end
 
   defp package do
-    [mainteiners: ["Tetiana Dushenkivska", "Keith Salisbury"],
+    [maintainers: ["Tetiana Dushenkivska", "Keith Salisbury"],
      licenses: ["MIT"],
      links: %{"GitHub" => "https://github.com/cleverbunny/validate_vat"}
     ]
