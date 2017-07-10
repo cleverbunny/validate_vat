@@ -30,6 +30,12 @@ defmodule Vat do
   def valid_format?("EE", vat_number), do: Regex.match?(~r/^\d{9}$/i, vat_number)
   def valid_format?("EL", vat_number), do: Regex.match?(~r/^\d{9}$/i, vat_number)
   def valid_format?("FI", vat_number), do: Regex.match?(~r/^\d{8}$/i, vat_number)
+  def valid_format?("HR", vat_number), do: Regex.match?(~r/^\d{11}$/i, vat_number)
+  def valid_format?("HU", vat_number), do: Regex.match?(~r/^\d{8}$/i, vat_number)
+  def valid_format?("IT", vat_number), do: Regex.match?(~r/^\d{11}$/i, vat_number)
+  def valid_format?("LU", vat_number), do: Regex.match?(~r/^\d{8}$/i, vat_number)
+  def valid_format?("LV", vat_number), do: Regex.match?(~r/^\d{11}$/i, vat_number)
+  def valid_format?("MT", vat_number), do: Regex.match?(~r/^\d{8}$/i, vat_number)
 
   def valid_format?("BG", vat_number) do
     Regex.match?(~r/^(\d{9}|\d{10})$/i, vat_number)
@@ -52,8 +58,18 @@ defmodule Vat do
   end
 
   def valid_format?("GB", vat_number) do
-    format1 = Regex.match?(~r/(^\d{9}$|^\d{12}$)/i, String.replace(vat_number, " ", ""))
+    format1 = Regex.match?(~r/(^(\d{9}|\d{12})$)/i, String.replace(vat_number, " ", ""))
     format2 = Regex.match?(~r/^(GD|HA)\d{3}$/i, vat_number)
     format1 || format2
+  end
+
+  def valid_format?("IE", vat_number) do
+    format1 = Regex.match?(~r/^\d[A-z0-9+*]\d{5}[A-z]$/i, vat_number)
+    format2 = Regex.match?(~r/^\d{7}WI$/i, vat_number)
+    format1 || format2
+  end
+
+  def valid_format?("LT", vat_number) do
+    Regex.match?(~r/^(\d{9}|\d{12})$/i, vat_number)
   end
 end

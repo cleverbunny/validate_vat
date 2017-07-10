@@ -282,4 +282,163 @@ defmodule VatTest do
       assert Vat.valid_format?("GB", "vm123K56789") == false
     end
   end
+
+  describe "Croatia" do
+    test "Valid Format VAT number provided" do
+      assert Vat.valid_format?("HR", "12345678901") == true
+    end
+
+    test "Invalid format VAT number, too many digits" do
+      assert Vat.valid_format?("HR", "123456789012") == false
+    end
+
+    test "Invalid format VAT number, not enough digits" do
+      assert Vat.valid_format?("HR", "1234567890") == false
+    end
+
+    test "Invalid format VAT number, not digits after first charachter" do
+      assert Vat.valid_format?("HR", "123K5678901") == false
+    end
+  end
+
+  describe "Hungary" do
+    test "Valid Format VAT number provided" do
+      assert Vat.valid_format?("HU", "12345678") == true
+    end
+
+    test "Invalid format VAT number, too many digits" do
+      assert Vat.valid_format?("HU", "1234567") == false
+    end
+
+    test "Invalid format VAT number, not enough digits" do
+      assert Vat.valid_format?("HU", "123456789") == false
+    end
+
+    test "Invalid format VAT number, not digits after first charachter" do
+      assert Vat.valid_format?("HU", "123K5678") == false
+    end
+  end
+
+  describe "Ireland" do
+    test "Valid Format VAT number provided" do
+      assert Vat.valid_format?("IE", "1234567F") == true
+      assert Vat.valid_format?("IE", "1T34567F") == true
+      assert Vat.valid_format?("IE", "1+34567F") == true
+      assert Vat.valid_format?("IE", "1*34567F") == true
+
+      assert Vat.valid_format?("IE", "1234567WI") == true
+    end
+
+    test "Invalid Format VAT number, special chars incorrect" do
+      assert Vat.valid_format?("IE", "12345678") == false 
+      assert Vat.valid_format?("IE", "1?345678") == false 
+      assert Vat.valid_format?("IE", "1B345678") == false 
+
+      assert Vat.valid_format?("IE", "123456789") == false 
+      assert Vat.valid_format?("IE", "1234567BR") == false 
+    end
+
+    test "Invalid format VAT number, too many digits" do
+      assert Vat.valid_format?("IE", "1234567") == false
+    end
+
+    test "Invalid format VAT number, not enough digits" do
+      assert Vat.valid_format?("IE", "1234567890") == false
+    end
+
+    test "Invalid format VAT number, not digits after first charachter" do
+      assert Vat.valid_format?("IE", "123K5678") == false
+    end
+  end
+
+  describe "Italy" do
+    test "Valid Format VAT number provided" do
+      assert Vat.valid_format?("IT", "12345678901") == true
+    end
+
+    test "Invalid format VAT number, too many digits" do
+      assert Vat.valid_format?("IT", "123456789012") == false
+    end
+
+    test "Invalid format VAT number, not enough digits" do
+      assert Vat.valid_format?("IT", "1234567890") == false
+    end
+
+    test "Invalid format VAT number, not digits after first charachter" do
+      assert Vat.valid_format?("IT", "123K5678901") == false
+    end
+  end
+
+  describe "Lithuania" do
+    test "Valid Format VAT number provided" do
+      assert Vat.valid_format?("LT", "123456789") == true
+      assert Vat.valid_format?("LT", "123456789012") == true
+    end
+
+    test "Invalid format VAT number, too many digits" do
+      assert Vat.valid_format?("LT", "1234567890123") == false
+    end
+
+    test "Invalid format VAT number, not enough digits" do
+      assert Vat.valid_format?("LT", "12345678") == false
+    end
+
+    test "Invalid format VAT number, not digits after first charachter" do
+      assert Vat.valid_format?("LT", "123K56789") == false
+    end
+  end
+  
+  describe "Luxemburg" do
+    test "Valid Format VAT number provided" do
+      assert Vat.valid_format?("LU", "12345678") == true
+    end
+
+    test "Invalid format VAT number, too many digits" do
+      assert Vat.valid_format?("LU", "123456789") == false
+    end
+
+    test "Invalid format VAT number, not enough digits" do
+      assert Vat.valid_format?("LU", "1234567") == false
+    end
+
+    test "Invalid format VAT number, not digits after first charachter" do
+      assert Vat.valid_format?("LU", "123K5678") == false
+    end
+  end
+
+  describe "Latvia" do
+    test "Valid Format VAT number provided" do
+      assert Vat.valid_format?("LV", "12345678901") == true
+    end
+
+    test "Invalid format VAT number, too many digits" do
+      assert Vat.valid_format?("LV", "123456789012") == false
+    end
+
+    test "Invalid format VAT number, not enough digits" do
+      assert Vat.valid_format?("LV", "1234567890") == false
+    end
+
+    test "Invalid format VAT number, not digits after first charachter" do
+      assert Vat.valid_format?("LV", "123K567890") == false
+    end
+  end
+
+  describe "Malta" do
+    test "Valid Format VAT number provided" do
+      assert Vat.valid_format?("MT", "12345678") == true
+    end
+
+    test "Invalid format VAT number, too many digits" do
+      assert Vat.valid_format?("MT", "123456789") == false
+    end
+
+    test "Invalid format VAT number, not enough digits" do
+      assert Vat.valid_format?("MT", "1234567") == false
+    end
+
+    test "Invalid format VAT number, not digits after first charachter" do
+      assert Vat.valid_format?("MT", "123K5678") == false
+    end
+  end
 end
