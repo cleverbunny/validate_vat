@@ -5,10 +5,10 @@ defmodule VatTest do
   describe "Austria" do
     test "Valid Format VAT number provided" do
       assert Vat.valid_format?("AT", "U123456789") == true
-      assert Vat.valid_format?("AT", "u123456789") == true
     end
 
     test "Invalid format VAT number, first charachter not U" do
+      assert Vat.valid_format?("AT", "u123456789") == false
       assert Vat.valid_format?("AT", "Y123456789") == false
     end
 
@@ -259,15 +259,14 @@ defmodule VatTest do
       assert Vat.valid_format?("GB", "123456789123") == true
 
       assert Vat.valid_format?("GB", "GD123") == true
-      assert Vat.valid_format?("GB", "gd123") == true
-
       assert Vat.valid_format?("GB", "HA123") == true
-      assert Vat.valid_format?("GB", "ha123") == true
     end
 
     test "Invalid Format VAT number, first 2 chars incorrect" do
       assert Vat.valid_format?("GB", "?!123") == false
       assert Vat.valid_format?("GB", "BR123") == false
+      assert Vat.valid_format?("GB", "gd123") == false 
+      assert Vat.valid_format?("GB", "ha123") == false 
     end
 
     test "Invalid format VAT number, too many digits" do
