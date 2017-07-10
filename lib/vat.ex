@@ -37,6 +37,12 @@ defmodule Vat do
   def valid_format?("LV", vat_number), do: Regex.match?(~r/^\d{11}$/, vat_number)
   def valid_format?("MT", vat_number), do: Regex.match?(~r/^\d{8}$/, vat_number)
   def valid_format?("NL", vat_number), do: Regex.match?(~r/^\d{10}B\d$/, vat_number)
+  def valid_format?("PL", vat_number), do: Regex.match?(~r/^\d{10}$/, vat_number)
+  def valid_format?("PT", vat_number), do: Regex.match?(~r/^\d{9}$/, vat_number)
+  def valid_format?("RO", vat_number), do: Regex.match?(~r/^\d{2,10}$/, vat_number)
+  def valid_format?("SE", vat_number), do: Regex.match?(~r/^\d{12}$/, vat_number)
+  def valid_format?("SI", vat_number), do: Regex.match?(~r/^\d{8}$/, vat_number)
+  def valid_format?("SK", vat_number), do: Regex.match?(~r/^\d{10}$/, vat_number)
 
   def valid_format?("BG", vat_number) do
     Regex.match?(~r/^(\d{9}|\d{10})$/, vat_number)
