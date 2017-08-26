@@ -79,4 +79,6 @@ defmodule Vat do
   def valid_format?("LT", vat_number) do
     Regex.match?(~r/^(\d{9}|\d{12})$/, vat_number)
   end
+
+  def valid_format?(_, _), do: false
 end
