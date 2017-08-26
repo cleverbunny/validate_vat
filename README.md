@@ -14,8 +14,8 @@ the VIES [tool](http://europa.eu/youreurope/business/vat-customs/check-number-vi
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `validate_vat` to your list of dependencies in `mix.exs`:
+The package can be installed by adding `validate_vat` to your list of dependencies
+in `mix.exs`:
 
 ```elixir
 def deps do
@@ -23,9 +23,7 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/validate_vat](https://hexdocs.pm/validate_vat).
+The docs can be found at [https://hexdocs.pm/validate_vat](https://hexdocs.pm/validate_vat).
 
 
 ## Usage 
@@ -33,7 +31,7 @@ be found at [https://hexdocs.pm/validate_vat](https://hexdocs.pm/validate_vat).
 Check if VAT number has valid format by passing country code and VAT number to the function:
 
 ```elixir
-iex> Vat.valid?("AT", "U123456789")
+iex> Vat.valid_format?("AT", "U123456789")
 true
 ```
 
