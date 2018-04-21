@@ -27,7 +27,8 @@ defmodule VatTest do
 
   describe "Belgium" do
     test "Valid Format VAT number provided" do
-      assert Vat.valid_format?("BE", "01234567890") == true
+      assert Vat.valid_format?("BE", "0123456789") == true
+      assert Vat.valid_format?("BE", "1123456789") == true
     end
 
     test "Invalid format VAT number, first charachter not 0" do
@@ -265,8 +266,8 @@ defmodule VatTest do
     test "Invalid Format VAT number, first 2 chars incorrect" do
       assert Vat.valid_format?("GB", "?!123") == false
       assert Vat.valid_format?("GB", "BR123") == false
-      assert Vat.valid_format?("GB", "gd123") == false 
-      assert Vat.valid_format?("GB", "ha123") == false 
+      assert Vat.valid_format?("GB", "gd123") == false
+      assert Vat.valid_format?("GB", "ha123") == false
     end
 
     test "Invalid format VAT number, too many digits" do
@@ -329,12 +330,12 @@ defmodule VatTest do
     end
 
     test "Invalid Format VAT number, special chars incorrect" do
-      assert Vat.valid_format?("IE", "12345678") == false 
-      assert Vat.valid_format?("IE", "1?345678") == false 
-      assert Vat.valid_format?("IE", "1B345678") == false 
+      assert Vat.valid_format?("IE", "12345678") == false
+      assert Vat.valid_format?("IE", "1?345678") == false
+      assert Vat.valid_format?("IE", "1B345678") == false
 
-      assert Vat.valid_format?("IE", "123456789") == false 
-      assert Vat.valid_format?("IE", "1234567BR") == false 
+      assert Vat.valid_format?("IE", "123456789") == false
+      assert Vat.valid_format?("IE", "1234567BR") == false
     end
 
     test "Invalid format VAT number, too many digits" do
@@ -386,7 +387,7 @@ defmodule VatTest do
       assert Vat.valid_format?("LT", "123K56789") == false
     end
   end
-  
+
   describe "Luxemburg" do
     test "Valid Format VAT number provided" do
       assert Vat.valid_format?("LU", "12345678") == true
