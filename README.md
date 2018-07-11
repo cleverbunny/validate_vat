@@ -19,14 +19,14 @@ in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:validate_vat, "~> 0.1.0"}]
+  [{:validate_vat, "~> 0.2.0"}]
 end
 ```
 
 The docs can be found at [https://hexdocs.pm/validate_vat](https://hexdocs.pm/validate_vat).
 
 
-## Usage 
+## Usage
 
 Check if VAT number has valid format by passing country code and VAT number to the function:
 
@@ -34,4 +34,3 @@ Check if VAT number has valid format by passing country code and VAT number to t
 iex> Vat.valid_format?("AT", "U123456789")
 true
 ```
-
