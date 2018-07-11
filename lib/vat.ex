@@ -24,7 +24,7 @@ defmodule Vat do
 
   @spec valid_format?(binary, binary) :: boolean
   def valid_format?("AT", vat_number), do: Regex.match?(~r/^U\d{9}$/, vat_number)
-  def valid_format?("BE", vat_number), do: Regex.match?(~r/^0\d{10}$/, vat_number)
+  def valid_format?("BE", vat_number), do: Regex.match?(~r/^[01]\d{9}$/, vat_number)
   def valid_format?("CY", vat_number), do: Regex.match?(~r/^\d{8}[A-z]$/, vat_number)
   def valid_format?("DE", vat_number), do: Regex.match?(~r/^\d{9}$/, vat_number)
   def valid_format?("EE", vat_number), do: Regex.match?(~r/^\d{9}$/, vat_number)

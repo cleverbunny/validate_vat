@@ -27,7 +27,8 @@ defmodule VatTest do
 
   describe "Belgium" do
     test "Valid Format VAT number provided" do
-      assert Vat.valid_format?("BE", "01234567890") == true
+      assert Vat.valid_format?("BE", "0123456789") == true
+      assert Vat.valid_format?("BE", "1123456789") == true
     end
 
     test "Invalid format VAT number, first charachter not 0" do
